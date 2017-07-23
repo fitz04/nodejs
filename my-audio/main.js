@@ -1,5 +1,5 @@
 const electron = require('electron')
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 
 const path = require('path')
 const url = require('url')
@@ -16,6 +16,8 @@ function createWindow() {
     slashes: true
   }))
 
+  
+
   var application_menu =
     [
       {
@@ -26,8 +28,9 @@ function createWindow() {
             label: 'File Open',
             accelerator: 'CmdOrCtrl+o',
             click: () => {
-              console.log(electron.dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] }))
-
+              filelist = electron.dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] })
+              console.log(filelist)
+              mainWindow.webContents.send('file-list', filelist)
             }
           },
 
