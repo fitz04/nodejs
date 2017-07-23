@@ -1,0 +1,5 @@
+1. menu ¸¸µé±â
+  - open, multi select
+2. file list
+3. play menu/ui
+4. audio graph
